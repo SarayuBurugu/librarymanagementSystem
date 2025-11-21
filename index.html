@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload with Label</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #labelBox { display: none; margin-top: 15px; font-size: 20px; font-weight: bold; color: green; }
+    img { margin-top: 15px; max-width: 200px; display: none; border: 1px solid #ccc; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Upload Image & Show Label</h2>
+
+  <input type="file" id="imgInput" accept="image/*"><br>
+  <img id="preview">
+
+  <br><br>
+  <button onclick="showLabel()">Show Label</button>
+
+  <div id="labelBox">This is the label!</div>
+
+  <script>
+    // Display uploaded image
+    document.getElementById("imgInput").addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const img = document.getElementById("preview");
+            img.src = URL.createObjectURL(file);
+            img.style.display = "block";
+        }
+    });
+
+    // Show label when button is clicked
+    function showLabel() {
+        document.getElementById("labelBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
